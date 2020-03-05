@@ -3,8 +3,7 @@ import VueRouter from 'vue-router'
 
 import Main from '../views/Main'
 import Login from '../views/Login'
-import SideBar from '../views/main/SideBar'
-import Header from "../views/main/Header";
+import UserInfo from "../views/main/UserInfo";
 // import Home from '../views/Home.vue'
 // import About from '../views/About.vue'
 
@@ -29,11 +28,8 @@ const routes = [
     component: Main,
     children: [
       {
-        path: '',
-        components: {
-          'v-sidebar': SideBar,
-          'v-header': Header
-        }
+        path: 'userinfo',
+        component: UserInfo
       }
     ]
   }

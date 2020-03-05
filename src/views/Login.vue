@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid min-width max-width">
         <div id="login" class="row row-cols-1 align-items-center justify-content-center login-center">
-            <form>
+            <form method="post" @submit.prevent>
                 <h1 class="text-center text-white margin-bottom">Customer Admin</h1>
                 <div class="inputbox">
                     <i class="fas fa-user input-head"></i>
@@ -23,7 +23,7 @@
                     </label>
                 </div>
 
-                <button @click="handleClick" class="btn btn-block login-btn">Login</button>
+                <button type="button" @click="handleClick" class="btn btn-block login-btn">Login</button>
             </form>
         </div>
     </div>
@@ -65,7 +65,10 @@
                 }
 
                 axios
-                   .post(url)
+                   .post(url, {
+                       username: this.username,
+                       password: this.password
+                   })
                    .then(response => {
                        //incorrect username or password
                        if(response.data.msg == "fail") {
@@ -104,7 +107,7 @@
         },
         //before leaving the login component
         beforeRouteLeave(to, from, next) {
-            window.document.body.style.backgroundColor = "";
+            window.document.body.style.backgroundColor = "#f3f3f3";
             next();
         }
     }
