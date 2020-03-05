@@ -1,6 +1,11 @@
 <template>
     <div id="app">
-        main page
+        <nav>
+            <router-view name="v-sidebar"></router-view>
+        </nav>
+        <main>
+            <router-view name="v-header"></router-view>
+        </main>
     </div>
 </template>
 

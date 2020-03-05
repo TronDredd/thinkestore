@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Main from '../views/Main.vue'
+
+import Main from '../views/Main'
+import Login from '../views/Login'
+import SideBar from '../views/main/SideBar'
+import Header from "../views/main/Header";
 // import Home from '../views/Home.vue'
 // import About from '../views/About.vue'
 
@@ -17,12 +21,21 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/Login.vue')
+    component: Login
   },
   {
     path: '/main',
     name: 'main',
-    component: Main
+    component: Main,
+    children: [
+      {
+        path: '',
+        components: {
+          'v-sidebar': SideBar,
+          'v-header': Header
+        }
+      }
+    ]
   }
 ]
 
